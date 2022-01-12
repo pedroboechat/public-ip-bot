@@ -11,12 +11,9 @@ exports.default = async (config) => {
   // Check for available configuration
   const gd_enabled = Object.keys(config.godaddy).length > 0;
   const fn_enabled = Object.keys(config.freenom).length > 0;
-  console.log(gd_enabled, fn_enabled);
 
   const last_ip = helpers.get_log_ip();
   const current_ip = await helpers.get_current_ip();
-
-  console.log(last_ip, current_ip);
 
   if (current_ip !== last_ip) {
     // Send new IP to Telegram
