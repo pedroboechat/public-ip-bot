@@ -1,0 +1,17 @@
+{
+    "godaddy": {
+        "example.com": [
+            "@",
+            "*",
+            "subdomain"
+        ]
+    },
+
+    "freenom": {
+        "example.tk": [
+            "@",
+            "www",
+            "subdomain"
+        ]
+    }
+}
