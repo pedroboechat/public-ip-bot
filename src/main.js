@@ -70,14 +70,15 @@ exports.default = async (config) => {
           .then(() => {
             helpers.send_telegram_message(
               `${fn_subdomain.replace("@", "")}${
-                (fn_subdomain === "@") ? "." : ""
+                (fn_subdomain === "@") ? "" : "."
               }${fn_domain} updated!`
             );
           })
           .catch((e) => {
             helpers.send_telegram_message(
-              `${fn_subdomain.replace("@", "")}.${fn_domain} failed to update...\nReason:${
-                e[0].reason}`
+              `${fn_subdomain.replace("@", "")}${
+                (fn_subdomain === "@") ? "" : "."
+              }${fn_domain} failed to update...\nReason:${e[0].reason}`
             );
           });
         }
