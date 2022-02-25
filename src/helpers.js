@@ -58,16 +58,22 @@ exports.get_current_ip = () => {
  * @param  {String} message  The message to be sent.
  */
 exports.send_telegram_message = (message) => {
-  return axios.get(
-    "https://api.telegram.org/bot"
-    + `${process.env.TG_TOKEN}`
-    + "/sendMessage?chat_id="
-    + `${process.env.TG_CHATID}`
-    + "&parse_mode=Markdown&text="
-    + `${message}`
-  )
-  .then()
-  .catch((e) => {
-    console.error(`Couldn't send message to chat_id #${chat_id}.\n${e}`);
-  });
+  if !!(message) {
+    return axios.get(
+      "https://api.telegram.org/bot"
+      + `${process.env.TG_TOKEN}`
+      + "/sendMessage?chat_id="
+      + `${process.env.TG_CHATID}`
+      + "&parse_mode=Markdown&text="
+      + `${message}`
+    )
+    .then()
+    .catch((e) => {
+      console.error(`Couldn't send message to chat_id #${chat_id}.\n${e}`);
+    });
+  }
+  else {
+    console.error("Message is undefined.");
+    process.exit(0);
+  }
 };
